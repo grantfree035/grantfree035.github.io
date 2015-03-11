@@ -1,0 +1,8 @@
+.slice {
+  border-style: solid;
+  border-width: medium;
+  border-color: #EBEBEB;
+  
+  padding: 5px;
+  margin: 5px;
+}
