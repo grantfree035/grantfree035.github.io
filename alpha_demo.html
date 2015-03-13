@@ -3,19 +3,25 @@
 <head>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/alpha.css">
+  
+  <script src="js/Chart.min.js"></script>
 </head>
 
 <body>
   
   <div class="row">
-    <div class="col-md-6" id="graph"></div>
-    <div class="col-md-6" id="input"></div>
+    <div class="col-md-6" id="graph">
+      <canvas id="barChart"></canvas>
+    </div>
+    <div class="col-md-6 pull-right" id="input">
+      <button class="btn btn-default btn-block" id="add-slice">Add Grade Slice</button>
+    </div>
   </div>
   
   <div class="row">
     <div class="col-md-6"></div>
     <div class="col-md-6">
-      <button class="btn btn-default btn-block" id="add-slice">Add Grade Slice</button>
+      
     </div>
   </div>
 

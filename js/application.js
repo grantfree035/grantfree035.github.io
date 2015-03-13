@@ -1,9 +1,15 @@
 (function() {
   
+  var slcCnt = 0; // current slice count
+  
   function addSlice() {
+    //increment slice count
+    ++slcCnt;
+    
     // append div
     var newDiv = document.createElement("div");
     newDiv.setAttribute("class", "slice");
+    newDiv.setAttribute("id", "s" + slcCnt);
     document.getElementById("input").appendChild(newDiv);
     
     var newRow = document.createElement("div");
@@ -46,8 +52,10 @@
     var newInp = document.createElement("input");
     newInp.setAttribute("type", "text");
     newInp.setAttribute("class", "form-control");
-    newInp.setAttribute("placeholder", "ie. 'homework'");
+    newInp.setAttribute("placeholder", "i.e. homework");
     grid3.appendChild(newInp);
+    
+    newInp.addEventListener("change", setChartLabel, false);
     
     grid3 = document.createElement("div");
     grid3.setAttribute("class", "col-md-6");
@@ -106,7 +114,8 @@
     newInp.setAttribute("type", "number");
     newInp.setAttribute("min", "0");
     newInp.setAttribute("class", "form-control");
-    newInp.setAttribute("placeholder", "0");
+    newInp.setAttribute("placeholder", "feature under-construction");
+    newInp.setAttributeNode(document.createAttribute("disabled"));
     grid3.appendChild(newInp);
     
     newLab = document.createElement("div");
@@ -121,7 +130,9 @@
   };
   
   function removeSlice() {
-    var slice = this.parentNode.parentNode.parentNode;
+    --slcCnt
+    var slice;
+    for (slice = this.parentNode; slice.className != "slice"; slice = slice.parentNode);
     var parentDiv = slice.parentNode;
     parentDiv.removeChild(slice);
   };
@@ -162,7 +173,35 @@
     else {}
   };
   
+  function setChartLabel() {
+    
+  };
+  
+  // listen for Add Grade Slice button
   var addSliceBtn = document.getElementById("add-slice");
   addSliceBtn.addEventListener("click", addSlice, false);
   
+  // resize graph canvas
+  var graphDiv = document.getElementById("graph");
+  var h = window.innerHeight * 0.9;
+  var w = graphDiv.offsetWidth * 0.9;
+  var cnvs = document.getElementById("barChart");
+  cnvs.setAttribute("width", w.toString());
+  cnvs.setAttribute("height", h.toString());
+  
+  // build bar chart
+  Chart.defaults.global.scaleOverride = true;
+  Chart.defaults.global.scaleSteps = 20;
+  Chart.defaults.global.scaleStepWidth = 5;
+  Chart.defaults.global.scaleStartValue = 0;
+  var data = {
+    labels: [],
+    datasets: []
+  };
+  var options = {
+    responsive: true
+  }
+  var ctx = document.getElementById("barChart").getContext("2d");
+  var newChart = new Chart(ctx).Bar(data);
+
 }());
