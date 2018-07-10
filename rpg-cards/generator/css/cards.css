@@ -153,6 +153,13 @@
     line-height: 18px;
     margin-bottom: 0.0em;
 }
+.card-banner {
+    height: 80px;
+    line-height: 18px;
+    margin-bottom: 0.0em;
+	border-top-left-radius: 2mm;
+	border-top-right-radius: 2mm;
+}
 .card-inline-icon {
     background-size: auto 80%;
     background-repeat: no-repeat;

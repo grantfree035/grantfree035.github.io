@@ -128,6 +128,12 @@ function card_element_picture(params, card_data, options) {
     return '<div class="card-element card-picture" style ="background-image: url(&quot;' + url + '&quot;); background-size: contain; background-position: center;background-repeat: no-repeat; height:' + height + 'px"></div>';
 }
 
+function card_element_banner(params, card_data, options) {
+    var url = params[0] || "";
+    var height = params[1] || "";
+    return '<div class="card-element card-banner" style ="background-image: url(&quot;' + url + '&quot;); background-size: contain; background-position: center;background-repeat: no-repeat; height:' + height + 'px"></div>';
+}
+
 function card_element_ruler(params, card_data, options) {
     var color = card_data_color_front(card_data, options);
     var fill = 'fill="' + color + '"';
@@ -298,6 +304,7 @@ var card_element_generators = {
     section: card_element_section,
     disabled: card_element_empty,
     picture: card_element_picture,
+	banner: card_element_banner,
     icon: card_element_inline_icon
 };
 
